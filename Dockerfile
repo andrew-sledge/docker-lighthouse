@@ -1,9 +1,12 @@
 FROM node:latest
 
 # Install google chrome
-RUN curl -sS -o - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add && \
-	echo 'deb http://dl.google.com/linux/chrome/deb/ stable main' >> /etc/apt/sources.list.d/google-chrome.list
-RUN apt-get update && apt-get install -y curl unzip openjdk-8-jre-headless xvfb libxi6 libgconf-2-4 google-chrome-stable
+RUN curl -sS -o - https://dl-ssl.google.com/linux/linux_signing_key.pub > /linux_signing_key.pub 
+RUN which apt-key
+RUN apt-key add /linux_signing_key.pub
+RUN echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list
+RUN apt-get update
+RUN apt-get install -y curl unzip xvfb libxi6 libgconf-2-4 google-chrome-stable
 
 # Install lighthouse
 RUN npm install -g lighthouse
