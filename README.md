@@ -1,4 +1,4 @@
-#docker-lighthouse
+# docker-lighthouse
 
 A Docker image to run [Google's
 Lighthouse](https://developers.google.com/web/tools/lighthouse/). I won't go
